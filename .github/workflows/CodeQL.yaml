@@ -1,0 +1,31 @@
+---
+name: Custom CodeQL Scan
+
+on: # set a custom CodeQL scan to check if there is different from the built-in one in GitHub
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions: {}
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up CodeQL
+        uses: github/codeql-action/setup-codeql@v2
+
+      - name: Initialize CodeQL database
+        uses: github/codeql-action/autobuild@v2
+
+      - name: Analyze code with CodeQL
+        uses: github/codeql-action/analyze@v2
+        with:
+          languages: python, javascript
