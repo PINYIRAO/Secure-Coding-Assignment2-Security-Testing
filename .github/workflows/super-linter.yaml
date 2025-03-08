@@ -2,8 +2,8 @@
 name: Lint
 
 on: # yamllint disable-line rule:truthy
-  push: [$default-branch, $protected-branches]
-  pull_request: [$default-branch]
+  push: -- main
+  pull_request: -- main
 
 permissions: {}
 
